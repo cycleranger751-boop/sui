@@ -1,11 +1,10 @@
-image: node:18
+image: node:lts
 
 pages:
   script:
     - npm install
-    - npm run build
-    - npm run export
-    - mv out public      # GitLab needs a folder named 'public'
+    - npm run build     # This creates the out/ folder automatically
+    - mv out public     # GitLab Pages requires a 'public' folder
   artifacts:
     paths:
       - public
