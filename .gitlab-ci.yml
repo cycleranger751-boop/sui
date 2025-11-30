@@ -1,10 +1,12 @@
 image: node:lts
 
 pages:
+  stage: deploy
   script:
     - npm install
-    - npm run build     # This creates the out/ folder automatically
-    - mv out public     # GitLab Pages requires a 'public' folder
+    - npm run build          # Next.js builds and generates the out/ folder
+    - rm -rf public          # Remove your repo's public folder (important!)
+    - mv out public          # GitLab Pages requires 'public/'
   artifacts:
     paths:
       - public
