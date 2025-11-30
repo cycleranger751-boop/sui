@@ -11,13 +11,19 @@ const LOADER = path.resolve(
 );
 
 const nextConfig = {
+  // IMPORTANT for GitLab Pages (static hosting)
+  output: "export",
+
+  // Disable Next.js image optimization (GitLab Pages cannot run a server)
   images: {
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "**" },
       { protocol: "http", hostname: "**" }
     ]
   },
 
+  // Keep your existing config
   outputFileTracingRoot: path.resolve(__dirname, "../../"),
 
   typescript: {

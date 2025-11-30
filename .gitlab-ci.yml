@@ -1,0 +1,13 @@
+image: node:18
+
+pages:
+  script:
+    - npm install
+    - npm run build
+    - npm run export
+    - mv out public      # GitLab needs a folder named 'public'
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
