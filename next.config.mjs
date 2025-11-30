@@ -5,16 +5,23 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// YOUR GITHUB REPO NAME
+const repoName = "multi-sig-treasury-policies";
+
 const LOADER = path.resolve(
   __dirname,
   "src/visual-edits/component-tagger-loader.js"
 );
 
 const nextConfig = {
-  // IMPORTANT for GitLab Pages (static hosting)
+  // Static export required for GitHub Pages
   output: "export",
 
-  // Disable Next.js image optimization (GitLab Pages cannot run a server)
+  // Required for GitHub Pages static hosting
+  basePath: "/" + repoName,
+  assetPrefix: "/" + repoName + "/",
+
+  // Disable Next.js image optimization
   images: {
     unoptimized: true,
     remotePatterns: [
